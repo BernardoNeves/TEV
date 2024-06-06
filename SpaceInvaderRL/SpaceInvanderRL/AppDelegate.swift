@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  SpaceInvaders
+//  SpaceInvanderRL
 //
-//  Created by Aluno Tmp on 31/05/2024.
+//  Created by Aluno Tmp on 06/06/2024.
 //
 
 import UIKit
