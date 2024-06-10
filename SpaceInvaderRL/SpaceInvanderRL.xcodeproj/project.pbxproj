@@ -19,6 +19,7 @@
 		0363C1CC2C11BF920098A8E3 /* SpaceInvanderRLUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363C1CB2C11BF920098A8E3 /* SpaceInvanderRLUITests.swift */; };
 		0363C1CE2C11BF920098A8E3 /* SpaceInvanderRLUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363C1CD2C11BF920098A8E3 /* SpaceInvanderRLUITestsLaunchTests.swift */; };
 		0363C1DB2C11CFD60098A8E3 /* PowerUpChoiceScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363C1DA2C11CFD60098A8E3 /* PowerUpChoiceScene.swift */; };
+		03E6AA8F2C13199F00A9F3FC /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E6AA8E2C13199F00A9F3FC /* MainMenuScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		0363C1CB2C11BF920098A8E3 /* SpaceInvanderRLUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceInvanderRLUITests.swift; sourceTree = "<group>"; };
 		0363C1CD2C11BF920098A8E3 /* SpaceInvanderRLUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceInvanderRLUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0363C1DA2C11CFD60098A8E3 /* PowerUpChoiceScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUpChoiceScene.swift; sourceTree = "<group>"; };
+		03E6AA8E2C13199F00A9F3FC /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				0363C1B12C11BF910098A8E3 /* Main.storyboard */,
 				0363C1B42C11BF920098A8E3 /* Assets.xcassets */,
 				0363C1B62C11BF920098A8E3 /* LaunchScreen.storyboard */,
+				03E6AA8E2C13199F00A9F3FC /* MainMenuScene.swift */,
 			);
 			path = SpaceInvanderRL;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03E6AA8F2C13199F00A9F3FC /* MainMenuScene.swift in Sources */,
 				0363C1AE2C11BF910098A8E3 /* GameScene.swift in Sources */,
 				0363C1B02C11BF910098A8E3 /* GameViewController.swift in Sources */,
 				0363C1DB2C11CFD60098A8E3 /* PowerUpChoiceScene.swift in Sources */,
