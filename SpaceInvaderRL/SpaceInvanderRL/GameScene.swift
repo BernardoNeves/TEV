@@ -1,6 +1,7 @@
 import SpriteKit
 import GameplayKit
 import CoreGraphics
+import AVFoundation
 
 class BulletNode: SKSpriteNode {
     var bounceCount: Int = 1
@@ -115,6 +116,18 @@ class GameScene: SKScene, SKSceneDelegate {
         setupScene()
     }
     
+    var backgroundMusicPlayer: AVAudioPlayer?
+    
+    func setupBackgroundMusic() {
+        let music = SKAudioNode(fileNamed: "SpaceInvaders.mp3")
+        music.autoplayLooped = true
+        addChild(music)
+    }
+    
+    func loadParticleEffect(named name: String) -> SKEmitterNode? {
+        return SKEmitterNode(fileNamed: name)
+    }
+    
     override func didMove(to view: SKView) {
         wave += 1
         if wave % 3 == 0 {
@@ -138,6 +151,7 @@ class GameScene: SKScene, SKSceneDelegate {
         setupInvaders()
         setupDrawerAndButton()
         setupPauseButton(name: "Pause")
+        setupBackgroundMusic()
     }
 
     func clearScene() {
@@ -189,11 +203,33 @@ class GameScene: SKScene, SKSceneDelegate {
         let totalWidth = CGFloat(initialEnemyCount - 1) * horizontalSpacing + enemySize.width
         let startX = (frame.width - totalWidth) / 2  // Center the formation horizontally
 
-        let invaderTexture1 = SKTexture(imageNamed: "InvaderA1")
-        let invaderTexture2 = SKTexture(imageNamed: "InvaderA2")
+        let invaderTextureA1 = SKTexture(imageNamed: "InvaderA1")
+        let invaderTextureA2 = SKTexture(imageNamed: "InvaderA2")
+        let invaderTextureB1 = SKTexture(imageNamed: "InvaderB1")
+        let invaderTextureB2 = SKTexture(imageNamed: "InvaderB2")
+        let invaderTextureC1 = SKTexture(imageNamed: "InvaderC1")
+        let invaderTextureC2 = SKTexture(imageNamed: "InvaderC2")
 
         for j in 0..<wave {
             for i in 0..<initialEnemyCount {
+                // Determine the texture based on the row number
+                let invaderTexture1: SKTexture
+                let invaderTexture2: SKTexture
+                switch j % 3 {
+                case 0:
+                    invaderTexture1 = invaderTextureA1
+                    invaderTexture2 = invaderTextureA2
+                case 1:
+                    invaderTexture1 = invaderTextureB1
+                    invaderTexture2 = invaderTextureB2
+                case 2:
+                    invaderTexture1 = invaderTextureC1
+                    invaderTexture2 = invaderTextureC2
+                default:
+                    invaderTexture1 = invaderTextureA1
+                    invaderTexture2 = invaderTextureA2
+                }
+                
                 let invader = SKSpriteNode(texture: invaderTexture1)
                 invader.size = enemySize
                 invader.position = CGPoint(x: startX + CGFloat(i) * horizontalSpacing, y: frame.maxY + CGFloat(j) * verticalSpacing - 60)
@@ -303,7 +339,6 @@ class GameScene: SKScene, SKSceneDelegate {
 
         let dt = currentTime - self.lastUpdateTime
 
-        // Move Invaders
         var changeDirection = false
         for invader in invaders {
             invader.position.x += CGFloat(moveSpeed.dx * moveDirection * dt)
@@ -328,7 +363,6 @@ class GameScene: SKScene, SKSceneDelegate {
             lastShotTime = currentTime
         }
 
-        // Update the position of the player's bullets
         for bullet in playerBullets {
             guard let bulletNode = bullet as? BulletNode,
                   let velocity = bullet.userData?["velocity"] as? CGVector else {
@@ -338,7 +372,6 @@ class GameScene: SKScene, SKSceneDelegate {
             bullet.position.x += velocity.dx * CGFloat(dt)
             bullet.position.y += velocity.dy * CGFloat(dt)
 
-            // Check for bouncing off the screen edges
             if bullet.position.x <= frame.minX || bullet.position.x >= frame.maxX {
                 bullet.userData?["velocity"] = CGVector(dx: -velocity.dx, dy: velocity.dy)
                 bulletNode.bounceCount -= 1
@@ -349,17 +382,22 @@ class GameScene: SKScene, SKSceneDelegate {
                 bulletNode.bounceCount -= 1
             }
 
-            // Remove bullet if bounce count reaches zero
             if bulletNode.bounceCount <= 0 {
                 bullet.removeFromParent()
                 playerBullets.removeAll { $0 == bullet }
             } else {
-                // Check for collision with invaders
                 if bullet.frame.intersects(player.frame) {
-                    //death()
+                    // Handle player hit
                 }
                 for invader in invaders {
                     if bullet.frame.intersects(invader.frame) {
+                        // Add particle effect when the invader is destroyed
+                        if let explosion = loadParticleEffect(named: "EnemyExplosion") {
+                            explosion.position = invader.position
+                            addChild(explosion)
+                            explosion.run(SKAction.sequence([SKAction.wait(forDuration: 0.1), SKAction.removeFromParent()]))
+                        }
+
                         invader.removeFromParent()
                         invaders.removeAll { $0 == invader }
                         bullet.removeFromParent()
@@ -372,22 +410,18 @@ class GameScene: SKScene, SKSceneDelegate {
             }
         }
 
-        // Update the position of the enemy's bullets
         for bullet in enemyBullets {
             bullet.position.x += bullet.velocity.dx * CGFloat(dt)
             bullet.position.y += bullet.velocity.dy * CGFloat(dt)
 
-            // Remove bullet if it goes off-screen
             if bullet.position.y <= frame.minY {
                 bullet.removeFromParent()
                 enemyBullets.removeAll { $0 == bullet }
             } else {
-                // Check for collision with player
                 if bullet.frame.intersects(player.frame) {
                     death()
                     break
                 }
-                // Check for collision with invaders
                 for invader in invaders {
                     if bullet.frame.intersects(invader.frame) {
                         bullet.removeFromParent()

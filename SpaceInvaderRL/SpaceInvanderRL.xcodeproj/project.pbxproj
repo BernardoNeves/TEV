@@ -19,6 +19,9 @@
 		0363C1CC2C11BF920098A8E3 /* SpaceInvanderRLUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363C1CB2C11BF920098A8E3 /* SpaceInvanderRLUITests.swift */; };
 		0363C1CE2C11BF920098A8E3 /* SpaceInvanderRLUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363C1CD2C11BF920098A8E3 /* SpaceInvanderRLUITestsLaunchTests.swift */; };
 		0363C1DB2C11CFD60098A8E3 /* PowerUpChoiceScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0363C1DA2C11CFD60098A8E3 /* PowerUpChoiceScene.swift */; };
+		03CD42232C19D2C30080B575 /* SpaceInvaders.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 03CD42222C19D2C30080B575 /* SpaceInvaders.mp3 */; };
+		03CD42272C19D61B0080B575 /* EnemyExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03CD42252C19D61B0080B575 /* EnemyExplosion.sks */; };
+		03CD42282C19D61B0080B575 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03CD42262C19D61B0080B575 /* Assets.xcassets */; };
 		03E6AA8F2C13199F00A9F3FC /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E6AA8E2C13199F00A9F3FC /* MainMenuScene.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +58,9 @@
 		0363C1CB2C11BF920098A8E3 /* SpaceInvanderRLUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceInvanderRLUITests.swift; sourceTree = "<group>"; };
 		0363C1CD2C11BF920098A8E3 /* SpaceInvanderRLUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceInvanderRLUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0363C1DA2C11CFD60098A8E3 /* PowerUpChoiceScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUpChoiceScene.swift; sourceTree = "<group>"; };
+		03CD42222C19D2C30080B575 /* SpaceInvaders.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SpaceInvaders.mp3; path = ../../../../SpaceInvaders.mp3; sourceTree = "<group>"; };
+		03CD42252C19D61B0080B575 /* EnemyExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EnemyExplosion.sks; sourceTree = "<group>"; };
+		03CD42262C19D61B0080B575 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03E6AA8E2C13199F00A9F3FC /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +112,8 @@
 		0363C1A62C11BF910098A8E3 /* SpaceInvanderRL */ = {
 			isa = PBXGroup;
 			children = (
+				03CD42242C19D5DC0080B575 /* particles */,
+				03CD42212C19D2760080B575 /* music */,
 				0363C1DA2C11CFD60098A8E3 /* PowerUpChoiceScene.swift */,
 				0363C1A72C11BF910098A8E3 /* AppDelegate.swift */,
 				0363C1A92C11BF910098A8E3 /* GameScene.sks */,
@@ -135,6 +143,23 @@
 				0363C1CD2C11BF920098A8E3 /* SpaceInvanderRLUITestsLaunchTests.swift */,
 			);
 			path = SpaceInvanderRLUITests;
+			sourceTree = "<group>";
+		};
+		03CD42212C19D2760080B575 /* music */ = {
+			isa = PBXGroup;
+			children = (
+				03CD42222C19D2C30080B575 /* SpaceInvaders.mp3 */,
+			);
+			path = music;
+			sourceTree = "<group>";
+		};
+		03CD42242C19D5DC0080B575 /* particles */ = {
+			isa = PBXGroup;
+			children = (
+				03CD42252C19D61B0080B575 /* EnemyExplosion.sks */,
+				03CD42262C19D61B0080B575 /* Assets.xcassets */,
+			);
+			path = particles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,7 +270,10 @@
 				0363C1AA2C11BF910098A8E3 /* GameScene.sks in Resources */,
 				0363C1B52C11BF920098A8E3 /* Assets.xcassets in Resources */,
 				0363C1B82C11BF920098A8E3 /* LaunchScreen.storyboard in Resources */,
+				03CD42272C19D61B0080B575 /* EnemyExplosion.sks in Resources */,
 				0363C1AC2C11BF910098A8E3 /* Actions.sks in Resources */,
+				03CD42282C19D61B0080B575 /* Assets.xcassets in Resources */,
+				03CD42232C19D2C30080B575 /* SpaceInvaders.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
